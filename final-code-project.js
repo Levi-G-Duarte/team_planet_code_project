@@ -13,13 +13,13 @@ function showUserFactors(factorType, factorSystem, factorMeasurement, factorValu
     let system;
 
     switch (factorPlanets) {
-        case "Solar":
+        case "solar":
             for (let planets in earthGravityFactors) {
                 // Calculate the factor multiplied by the input value and round it to two decimals
                 results[planets] = parseFloat((factorValue * earthGravityFactors[planets]).toFixed(2));
             }
             break;
-        case "Alien":
+        case "alien":
             for (let planets in alienGravityFactors) {
                 // Calculate the factor multiplied by the input value and round it to two decimals
                 results[planets] = parseFloat((factorValue * alienGravityFactors[planets]).toFixed(2));
@@ -73,25 +73,57 @@ function showUserFactors(factorType, factorSystem, factorMeasurement, factorValu
     for (let planets in results) {
         console.log(`Your ${factor} on ${planets} is ${results[[planets]]}${system}`);
     }
-}
+};
 
+// let isMatch = false;
+// let validWords = [];
 function userInput() {
-    console.log(`Enter your type of factor: (e.g weight, jump or pushup)`)
-    const factorType = prompt(">");
-    console.log(`Enter system type: (e.g imperial or metric)`)
-    const factorSystem = prompt(">");
-    console.log(`Enter measurement type: (e.g distance or mass)`)
-    const factorMeasurement = prompt(">")
-    console.log(`Enter value:`)
-    const factorValue = prompt(">")
-    console.log(`Enter planet system: (Solar or Alien)`)
-    const factorPlanets = prompt(">")
 
-    showUserFactors(factorType, factorSystem, factorMeasurement, factorValue, factorPlanets)
+    while (true) {
+
+        console.log(`Enter your type of factor: (e.g weight, jump or pushup)`)
+        const factorType = prompt(">").trim().toLowerCase();
+        if (factorType != "weight" || factorType != "jump" || factorType != "pushup")
+            console.log("Your an L");
+        else {
+            break;
+        }
+        console.log(`Enter system type: (e.g imperial or metric)`);
+        const factorSystem = prompt(">").trim().toLowerCase();
+        if (factorSystem != "imperial" || factorType != "metric")
+            console.log("Your an L");
+        else {
+            break;
+        }
+        console.log(`Enter measurement type: (e.g distance or mass)`)
+        const factorMeasurement = prompt(">").trim().toLowerCase();
+        if (factorMeasurement != "distance" || factorMeasurement != "mass")
+            console.log("Your an L");
+        else {
+            break;
+        }
+        console.log(`Enter value:`)
+        const factorValue = prompt(">").trim();
+        if (!isNaN(parse(factorValue)))
+            console.log("Your an L");
+        else {
+            break;
+        }
+        console.log(`Enter planet system: (solar or alien)`)
+        const factorPlanets = prompt(">").trim().toLowerCase();;
+        if (factorPlanets != "solar" || factorPlanets != "alien")
+            console.log("Your an L");
+        else {
+            break;
+        }
+        break;
+    }
+    
+    showUserFactors(factorType, factorSystem, factorMeasurement, factorValue, factorPlanets);
 }
 // Define a function to get user inputs for factor type and value
-    // Prompt the user to enter the type of factor they want to calculate
-    // Prompt the user to enter the numerical value of the factor
+// Prompt the user to enter the type of factor they want to calculate
+// Prompt the user to enter the numerical value of the factor
     // Call the showUserFactors function with the user inputs and the gravity factors
 // Expose getUserFactors globally
 global.showUserFactors = showUserFactors;
@@ -104,3 +136,14 @@ global.userInput = userInput;
 //factorMeasurement = distance, mass
 //factorValue = userValue
 //factorPlanets = Alien or Solar
+// if (isMatch == true) {
+//     for (let i = 0; i < validWords - 1; i++) {
+//         if (validWords[i] === userInput) {
+//             isMatch = true;
+//         } break;
+//     }
+// }
+// else {
+//     console.log("Try Again!")
+// }
+// break;
