@@ -13,13 +13,13 @@ function showUserFactors(factorType, factorSystem, factorMeasurement, factorValu
     let system;
 
     switch (factorPlanets) {
-        case "Solar":
+        case "solar":
             for (let planets in earthGravityFactors) {
                 // Calculate the factor multiplied by the input value and round it to two decimals
                 results[planets] = parseFloat((factorValue * earthGravityFactors[planets]).toFixed(2));
             }
             break;
-        case "Alien":
+        case "alien":
             for (let planets in alienGravityFactors) {
                 // Calculate the factor multiplied by the input value and round it to two decimals
                 results[planets] = parseFloat((factorValue * alienGravityFactors[planets]).toFixed(2));
