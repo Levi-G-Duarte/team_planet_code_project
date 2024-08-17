@@ -80,11 +80,11 @@ function showUserFactors(factorType, factorSystem, factorMeasurement, factorValu
 function userInput() {
 
     while (true) {
-
         console.log(`Enter your type of factor: (e.g weight, jump or pushup)`)
-        const factorType = prompt(">").trim().toLowerCase();
-        if (factorType != "weight" || factorType != "jump" || factorType != "pushup")
+        const factorType = prompt(">>").trim().toLowerCase();
+        if (factorType != "weight" || factorType != "jump" || factorType != "pushup") {
             console.log("Your an L");
+        }
         else {
             break;
         }
@@ -104,7 +104,7 @@ function userInput() {
         }
         console.log(`Enter value:`)
         const factorValue = prompt(">").trim();
-        if (!isNaN(parse(factorValue)))
+        if (!isNaN(parseFloat(factorValue)))
             console.log("Your an L");
         else {
             break;
@@ -116,7 +116,6 @@ function userInput() {
         else {
             break;
         }
-        break;
     }
     
     showUserFactors(factorType, factorSystem, factorMeasurement, factorValue, factorPlanets);
