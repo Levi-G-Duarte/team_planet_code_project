@@ -11,7 +11,7 @@ const repl = require('repl');
 const fs = require('fs');
 const path = require('path');
 
-const scripts = ['./index.js', './final-code-project.js', './daniel-super-amazing-calculator-fr.js'];
+const scripts = ['./index.js', './final-code-project.js'];
 
 const loadFunctions = () => {
     scripts.forEach(script => {

@@ -78,46 +78,68 @@ function showUserFactors(factorType, factorSystem, factorMeasurement, factorValu
 // let isMatch = false;
 // let validWords = [];
 function userInput() {
+    let factorType;
+    let factorSystem;
+    let factorMeasurement;
+    let factorValue;
+    let factorPlanets;
 
     while (true) {
 
-        console.log(`Enter your type of factor: (e.g weight, jump or pushup)`)
-        const factorType = prompt(">").trim().toLowerCase();
-        if (factorType != "weight" || factorType != "jump" || factorType != "pushup")
-            console.log("Your an L");
-        else {
+        // console.log(`Enter your type of factor: (e.g weight, jump or pushup)`);
+        // factorType = prompt("> ").trim().toLowerCase();
+        // if (factorType === "weight" || factorType === "jump" || factorType === "pushup") {
+        //     break;
+        // } else {
+        //     console.log("Enter a valid factor.");
+        //     factorType = prompt("> ").trim().toLowerCase();
+        // }
+
+        console.log(`Enter a type of factor: (e.g. weight, jump, or pushup)`);
+        factorType = prompt("> ").trim().toLowerCase();
+        if (factorType === "weight" || factorType === "jump" ||  factorType === "pushup") {
+            console.log("select");
+        } else {
+            console.log("sigma")
+            factorType = prompt("> ").trim().toLowerCase();
+        }
+        
+        if (factorType === "pushup") {
+            factorMeasurement = "repetitions";
+            break; 
+        } else if (factorSystem != "metric" || factorSystem != "imperial") {
+            console.log("Entmeer a valid factor.");
+            factorSystem = prompt("> ").trim().toLowerCase
             break;
         }
-        console.log(`Enter system type: (e.g imperial or metric)`);
-        const factorSystem = prompt(">").trim().toLowerCase();
-        if (factorSystem != "imperial" || factorType != "metric")
+       
+        if (factorType != "pushup") {
+            console.log(`Enter system type: (e.g imperial or metric)`);
+            factorSystem = prompt("> ").trim().toLowerCase();
+        }
+        console.log(`Enter measurement type: (e.g distance or mass)`);
+        factorMeasurement = prompt("> ").trim().toLowerCase();
+        if (factorMeasurement != "distance" || factorMeasurement != "mass") {
             console.log("Your an L");
-        else {
+        } else {
             break;
         }
-        console.log(`Enter measurement type: (e.g distance or mass)`)
-        const factorMeasurement = prompt(">").trim().toLowerCase();
-        if (factorMeasurement != "distance" || factorMeasurement != "mass")
+        console.log(`Enter value:`);
+        factorValue = prompt("> ").trim();
+        if (!isNaN(parse(factorValue))) {
             console.log("Your an L");
-        else {
+        } else {
             break;
         }
-        console.log(`Enter value:`)
-        const factorValue = prompt(">").trim();
-        if (!isNaN(parse(factorValue)))
+        console.log(`Enter planet system: (solar or alien)`);
+        factorPlanets = prompt("> ").trim().toLowerCase();;
+        if (factorPlanets != "solar" || factorPlanets != "alien") {
             console.log("Your an L");
-        else {
-            break;
-        }
-        console.log(`Enter planet system: (solar or alien)`)
-        const factorPlanets = prompt(">").trim().toLowerCase();;
-        if (factorPlanets != "solar" || factorPlanets != "alien")
-            console.log("Your an L");
-        else {
+        } else {
             break;
         }
         break;
-    }
+    };
     
     showUserFactors(factorType, factorSystem, factorMeasurement, factorValue, factorPlanets);
 }
